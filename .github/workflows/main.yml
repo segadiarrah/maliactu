@@ -14,7 +14,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./public_html/wp-content/uploads/simply-static
+        working-directory: wp-content/uploads/simply-static/
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
