@@ -12,13 +12,19 @@ jobs:
         with:
           node-version: '20' # Specify Node.js version to use
 
+      # Assuming you want to create a directory under 'public_html/wp-content/uploads/simply-static'
+      # The previous 'mkdir' command seemed misplaced. Adjust if the intent was different.
       - name: Create the simply-static directory
-        run: mkdir -p .github/maliactu/maliactu
+        run: mkdir -p public_html/wp-content/uploads/simply-static
+        working-directory: ./ # Adjust if your base directory is different
 
+      # Removed duplicate "Install dependencies" step.
+      # Corrected to install dependencies in the intended directory.
       - name: Install dependencies
         run: npm install
-        working-directory: /
+        working-directory: ./public_html/wp-content/uploads/simply-static
 
+      # FTP Deploy step
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
