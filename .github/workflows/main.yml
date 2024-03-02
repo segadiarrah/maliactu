@@ -13,11 +13,11 @@ jobs:
           node-version: '20' # Specify Node.js version to use
 
       - name: Create the simply-static directory
-        run: mkdir -p .github/ISSUE_TEMPLATE/
+        run: mkdir -p .github/maliactu/maliactu
 
       - name: Install dependencies
         run: npm install
-        working-directory: /
+        working-directory: /maliactu/maliactu/
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -25,4 +25,4 @@ jobs:
           server: 179.61.246.218
           username: admin_cloudflare
           password: ${{ secrets.ftp_password }}
-          server-dir: .github/ISSUE_TEMPLATE/
+          server-dir: public_html/
