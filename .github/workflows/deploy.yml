@@ -1,0 +1,16 @@
+name: Hourly Deploy
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Ajoutez ici les étapes nécessaires pour déployer votre site
+    # Par exemple, pour un site statique sur Cloudflare Pages, vous pourriez simplement pousser les changements à GitHub et laisser Cloudflare Pages s'occuper du reste.
+    # Si vous avez besoin d'une étape spécifique pour Cloudflare, comme purger le cache ou déclencher un déploiement via l'API Cloudflare, ajoutez ces commandes ici.
