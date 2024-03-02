@@ -14,6 +14,10 @@ jobs:
           node-version: '20' # Update this line to use Node.js 20
 
       # Add any steps that require Node.js below this line.
+      - name: Install dependencies
+  run: npm install
+  working-directory: ./public_html/wp-content/uploads/simply-static
+
       # For example, if you need to install dependencies:
       - name: Install dependencies
         run: npm install
