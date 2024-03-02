@@ -1,17 +1,28 @@
-on: repository_dispatch
+on: push
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: 179.61.246.218
-        username: admin_cloudflare
-        password: ${{ secrets.ftp_password }}
-        server-dir: public_html/
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+      
+      # Add Node.js setup if your project needs it
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Choose the Node.js version suitable for your project
+
+      # Install dependencies if your project needs it
+      - name: Install dependencies
+        run: npm install
+        # Ensure this step is only included if your project has a package.json and needs Node.js
+      
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: 179.61.246.218
+          username: admin_cloudflare
+          password: ${{ secrets.ftp_password }}
+          server-dir: public_html/
