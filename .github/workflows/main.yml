@@ -8,17 +8,17 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
       
-      # Add Node.js setup if your project needs it
-      - name: Use Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Choose the Node.js version suitable for your project
+          node-version: '20' # Update this line to use Node.js 20
 
-      # Install dependencies if your project needs it
+      # Add any steps that require Node.js below this line.
+      # For example, if you need to install dependencies:
       - name: Install dependencies
         run: npm install
-        # Ensure this step is only included if your project has a package.json and needs Node.js
-      
+        # Make sure this step is needed for your project
+
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
