@@ -28,7 +28,7 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ftp.maliactu.net
+          server: 179.61.246.218
           username: admin_cloudflare
           password: ${{ secrets.PASSWORD }}
           server-dir: public_html/
