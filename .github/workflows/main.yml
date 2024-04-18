@@ -8,21 +8,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+      
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'npm'  # Caches npm modules for faster subsequent builds
 
       - name: Prepare directories
         run: mkdir -p ./public_html/wp-content/uploads/simply-static
 
-      - name: Install dependencies in simply-static
+      - name: Install dependencies
         run: npm install
         working-directory: ./public_html/wp-content/uploads/simply-static
 
-      - name: 📂 Sync files
+      - name: 📂 Sync files to the server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: 179.61.246.218
