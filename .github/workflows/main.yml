@@ -8,24 +8,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-          cache: 'npm'  # Enables caching of npm modules
+          cache: 'npm'
 
-      # Assuming your directory structure needs to be created (if it doesn't exist in the repo)
-      - name: Prepare directories
-        run: mkdir -p ./public_html/wp-content/uploads/simply-static
-        working-directory: ./maliactu.net/public_html
-
-      # Installing dependencies in the correct directory where your package.json and lock file exist
       - name: Install dependencies
         run: npm install
-        working-directory: ./maliactu.net/public_html
+        working-directory: ./public_html/wp-content/uploads/simply-static
 
-      # Sync files to the server
       - name: 📂 Sync files to the server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
