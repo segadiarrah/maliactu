@@ -10,7 +10,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Specify Node.js version to use
+          node-version: '16' # Specify Node.js version to use
 
       # Assuming you want to ensure the directory exists, 
       # but it looks like you're attempting to create a directory where you expect the package.json to be.
