@@ -9,11 +9,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: List all files in the root
+        run: ls -alh
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
           cache: 'npm'
+
+      - name: List files in the target directory
+        run: ls -alh
+        working-directory: public_html/wp-content/uploads/simply-static
 
       - name: Install dependencies
         run: npm install
