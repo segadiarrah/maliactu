@@ -1,29 +1,26 @@
 on: push
 name: Deploy website on push
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Specify Node.js version to use
+          node-version: '20'
+          cache: 'npm'
 
-      # Assuming you want to ensure the directory exists, 
-      # but it looks like you're attempting to create a directory where you expect the package.json to be.
-      # This step is modified to reflect a more typical use case like preparing a directory for later use.
       - name: Prepare directories
         run: mkdir -p ./public_html/wp-content/uploads/simply-static
 
-      # This step assumes you have a package.json in the simply-static directory and want to install dependencies there.
       - name: Install dependencies in simply-static
         run: npm install
         working-directory: ./public_html/wp-content/uploads/simply-static
-
-      # Removed redundant "Install dependencies" step that was set to run at the root ('/') directory.
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
