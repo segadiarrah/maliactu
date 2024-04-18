@@ -13,15 +13,19 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-          cache: 'npm'  # Caches npm modules for faster subsequent builds
+          cache: 'npm'  # Enables caching of npm modules
 
+      # Assuming your directory structure needs to be created (if it doesn't exist in the repo)
       - name: Prepare directories
         run: mkdir -p ./public_html/wp-content/uploads/simply-static
+        working-directory: ./maliactu.net/public_html
 
+      # Installing dependencies in the correct directory where your package.json and lock file exist
       - name: Install dependencies
         run: npm install
-        working-directory: ./public_html/wp-content/uploads/simply-static
+        working-directory: ./maliactu.net/public_html
 
+      # Sync files to the server
       - name: 📂 Sync files to the server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
