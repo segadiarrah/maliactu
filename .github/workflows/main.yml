@@ -15,12 +15,9 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Change to correct directory
-        run: cd ./public_html/wp-content/uploads/simply-static
-
       - name: Install dependencies
         run: npm install
-        working-directory: ./public_html/wp-content/uploads/simply-static
+        working-directory: public_html/wp-content/uploads/simply-static
 
       - name: Sync files to the server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
