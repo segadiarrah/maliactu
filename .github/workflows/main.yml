@@ -1,35 +1,34 @@
 on: push
 name: Deploy website on push
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: List all files in the root
-        run: ls -alh
-
+      
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '16' # Specify Node.js version to use
 
-      - name: List files in the target directory
-        run: ls -alh
-        working-directory: /home/maliactu.net/public_html/wp-content/uploads/simply-static/
+      # Assuming you want to ensure the directory exists, 
+      # but it looks like you're attempting to create a directory where you expect the package.json to be.
+      # This step is modified to reflect a more typical use case like preparing a directory for later use.
+      - name: Prepare directories
+        run: mkdir -p ./public_html/wp-content/uploads/simply-static/
 
-      - name: Install dependencies
+      # This step assumes you have a package.json in the simply-static directory and want to install dependencies there.
+      - name: Install dependencies in simply-static
         run: npm install
-        working-directory: /home/maliactu.net/public_html/wp-content/uploads/simply-static/
+        working-directory: ./public_html/wp-content/uploads/simply-static/
 
-      - name: Sync files to the server
+      # Removed redundant "Install dependencies" step that was set to run at the root ('/') directory.
+
+      - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: 179.61.246.218
           username: admin_cloudflare
           password: ${{ secrets.PASSWORD }}
-          server-dir: /home/maliactu.net/public_html/
+          server-dir: public_html/
