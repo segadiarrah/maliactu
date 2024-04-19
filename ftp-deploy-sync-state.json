@@ -1,0 +1,41 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1713448554120,
+    "data": [
+        {
+            "type": "file",
+            "name": "README.md",
+            "size": 22,
+            "hash": "da38dd7de6797ad0cd56146882b7b24ee2ab1c01f3305b954433d8c7fa246471"
+        },
+        {
+            "type": "file",
+            "name": "package-lock.json",
+            "size": 203,
+            "hash": "4fabd942334a8fe6b52c9644646b4cd82115c2d48e577cdd2a06902509fa1e67"
+        },
+        {
+            "type": "file",
+            "name": "package.json",
+            "size": 353,
+            "hash": "79924bcd094846c78244b1c489b995d85f98f18af7193c1bd3b8f6b8660615bf"
+        },
+        {
+            "type": "folder",
+            "name": "public_html"
+        },
+        {
+            "type": "folder",
+            "name": "public_html/wp-content"
+        },
+        {
+            "type": "folder",
+            "name": "public_html/wp-content/uploads"
+        },
+        {
+            "type": "folder",
+            "name": "public_html/wp-content/uploads/simply-static"
+        }
+    ]
+}
