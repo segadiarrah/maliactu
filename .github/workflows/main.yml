@@ -20,11 +20,11 @@ jobs:
 
       - name: List files in the target directory
         run: ls -alh
-        working-directory: public_html/wp-content/uploads/simply-static
+        working-directory: /home/maliactu.net/public_html/wp-content/uploads/simply-static
 
       - name: Install dependencies
         run: npm install
-        working-directory: public_html/wp-content/uploads/simply-static
+        working-directory: /home/maliactu.net/public_html/wp-content/uploads/simply-static
 
       - name: Sync files to the server
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -32,4 +32,4 @@ jobs:
           server: 179.61.246.218
           username: admin_cloudflare
           password: ${{ secrets.PASSWORD }}
-          server-dir: public_html/
+          server-dir: /home/maliactu.net/public_html/
